@@ -1,0 +1,22 @@
+<div class="right_menu_block">
+    <h3>Recent posts</h3>
+    <ul>
+        {% for post in recent %}
+        <li><a href="/post/{{post.id}}" class="right_menu_link">{{post.title}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+<hr>
+<div class="right_menu_block">
+    <h3>Top tags</h3>
+   <ul>
+        {% for tag_info in top_tags %}
+        <li>
+            <p>
+                <a href="/tag" class="right_menu_link">{{tag_info[0].title}}</a>
+                - {{tag_info[1]|string}} posts
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
