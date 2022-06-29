@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="post">
+    <div class="single_post">
+        <h2>{{post.title}}</h2>
+        <hr>
+        <p>{{post.text| none_to_str}}</p>
+    </div>
+ </div>
+<hr style="color: black; margin: 5px">
+<div id="comments">
+    <form action="/comment" method="post">
+        <input type="hidden" name="post_id" value="{{post.id}}"/>
+        <input id="comment_input" type="text" name="text" value="Add comment..">
+    </form>
+        {% for comment in comments_with_users %}
+            <div class="single_comment">
+                <p>
+                    <span class="comment_username">
+                        {{comment[1].username}}
+                    </span>
+                    {{comment[0].text}}
+                </p>
+                <p class="comment_date">{{comment[0].date}}</p>
+            </div>
+        {% endfor %}
+ </div>
+{% endblock %}
